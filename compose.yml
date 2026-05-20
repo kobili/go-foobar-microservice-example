@@ -19,3 +19,6 @@ services:
       dockerfile: ./docker/foobar/Dockerfile
     ports:
       - "8081:8081"
+    environment:
+      - FOO_SERVICE=${FOO_SERVICE}
+      - BAR_SERVICE=${BAR_SERVICE}
