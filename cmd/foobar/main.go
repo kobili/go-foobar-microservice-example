@@ -21,8 +21,8 @@ func writeError(w http.ResponseWriter, err error) {
 }
 
 func main() {
-	FOO_SERVICE := os.Getenv("FOO_SERVICE")
-	BAR_SERVICE := os.Getenv("BAR_SERVICE")
+	FOO_SERVICE_URL := os.Getenv("FOO_SERVICE_URL")
+	BAR_SERVICE_URL := os.Getenv("BAR_SERVICE_URL")
 
 	httpClient := http.Client{
 		Timeout: 10 * time.Second,
@@ -33,7 +33,7 @@ func main() {
 	mux.HandleFunc("GET /foobar", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
 
-		fooResponse, err := httpClient.Get(fmt.Sprintf("http://%s:8000/foo", FOO_SERVICE))
+		fooResponse, err := httpClient.Get(fmt.Sprintf("%s/foo", FOO_SERVICE_URL))
 		if err != nil {
 			writeError(w, err)
 			return
@@ -53,7 +53,7 @@ func main() {
 			return
 		}
 
-		barResponse, err := httpClient.Get(fmt.Sprintf("http://%s:8080/bar", BAR_SERVICE))
+		barResponse, err := httpClient.Get(fmt.Sprintf("%s/bar", BAR_SERVICE_URL))
 		if err != nil {
 			writeError(w, err)
 			return

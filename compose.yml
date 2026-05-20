@@ -20,5 +20,5 @@ services:
     ports:
       - "8081:8081"
     environment:
-      - FOO_SERVICE=${FOO_SERVICE}
-      - BAR_SERVICE=${BAR_SERVICE}
+      - FOO_SERVICE_URL=${FOO_SERVICE_URL}
+      - BAR_SERVICE_URL=${BAR_SERVICE_URL}
