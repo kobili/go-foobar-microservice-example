@@ -29,7 +29,7 @@ func main() {
 	mux.HandleFunc("GET /foobar", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
 
-		fooResponse, err := httpClient.Get("http://localhost:8000/foo")
+		fooResponse, err := httpClient.Get("http://host.docker.internal:8000/foo")
 		if err != nil {
 			writeError(w, err)
 			return
@@ -49,7 +49,7 @@ func main() {
 			return
 		}
 
-		barResponse, err := httpClient.Get("http://localhost:8080/bar")
+		barResponse, err := httpClient.Get("http://host.docker.internal:8080/bar")
 		if err != nil {
 			writeError(w, err)
 			return
