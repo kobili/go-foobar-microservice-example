@@ -1,0 +1,21 @@
+services:
+  foo:
+    build:
+      context: .
+      dockerfile: ./docker/foo/Dockerfile
+    ports:
+      - "8000:8000"
+
+  bar:
+    build:
+      context: .
+      dockerfile: ./docker/bar/Dockerfile
+    ports:
+      - "8080:8080"
+
+  foobar:
+    build:
+      context: .
+      dockerfile: ./docker/foobar/Dockerfile
+    ports:
+      - "8081:8081"
