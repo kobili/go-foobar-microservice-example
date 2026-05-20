@@ -33,7 +33,7 @@ func main() {
 	mux.HandleFunc("GET /foobar", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Add("Content-Type", "application/json")
 
-		fooResponse, err := httpClient.Get(fmt.Sprintf("%s/foo", FOO_SERVICE_URL))
+		fooResponse, err := httpClient.Get(fmt.Sprintf("%sfoo", FOO_SERVICE_URL))
 		if err != nil {
 			writeError(w, err)
 			return
@@ -53,7 +53,7 @@ func main() {
 			return
 		}
 
-		barResponse, err := httpClient.Get(fmt.Sprintf("%s/bar", BAR_SERVICE_URL))
+		barResponse, err := httpClient.Get(fmt.Sprintf("%sbar", BAR_SERVICE_URL))
 		if err != nil {
 			writeError(w, err)
 			return
