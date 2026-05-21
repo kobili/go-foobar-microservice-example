@@ -80,6 +80,11 @@ func main() {
 		json.NewEncoder(w).Encode(message)
 	})
 
-	fmt.Println("listening on port 8081")
-	http.ListenAndServe(":8081", mux)
+	SERVER_PORT := os.Getenv("SERVER_PORT")
+	if SERVER_PORT == "" {
+		SERVER_PORT = "8081"
+	}
+
+	fmt.Printf("listening on port %s\n", SERVER_PORT)
+	http.ListenAndServe(fmt.Sprintf(":%s", SERVER_PORT), mux)
 }

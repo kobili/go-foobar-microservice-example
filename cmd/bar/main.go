@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 
 	"foobar/middleware"
 )
@@ -19,6 +20,12 @@ func main() {
 		})
 	})
 
-	fmt.Println("Listening on port 8080")
-	http.ListenAndServe(":8080", middleware.RequestLogger(mux))
+	SERVER_PORT := os.Getenv("SERVER_PORT")
+
+	fmt.Printf("Listening on port %s\n", SERVER_PORT)
+	if SERVER_PORT == "" {
+		SERVER_PORT = "8080"
+	}
+
+	http.ListenAndServe(fmt.Sprintf(":%s", SERVER_PORT), middleware.RequestLogger(mux))
 }
