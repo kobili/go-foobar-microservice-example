@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  labels:
+    app: foo-ms
+  name: foo-ms
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: foo-ms
+
+  strategy: {}
+
+  template:
+    metadata:
+      labels:
+        app: foo-ms
+    
+    spec:
+      containers:
+        - image: foobar-foo:v1
+          name: foobar-foo
+          resources: {}
+          ports:
+          - containerPort: 8000
+          env:
+          - name: SERVER_PORT
+            value: "8000"
+  
+status: {}
