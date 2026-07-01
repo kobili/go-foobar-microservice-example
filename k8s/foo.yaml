@@ -18,7 +18,7 @@ spec:
     metadata:
       labels:
         app: foo-ms
-    
+
     spec:
       containers:
         - image: foobar-foo:v1
