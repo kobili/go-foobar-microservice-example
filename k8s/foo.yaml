@@ -29,5 +29,3 @@ spec:
           env:
           - name: SERVER_PORT
             value: "8000"
-  
-status: {}

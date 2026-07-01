@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  labels:
+    app: bar-ms
+  name: bar-ms
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: bar-ms
+
+  strategy: {}
+
+  template:
+    metadata:
+      labels:
+        app: bar-ms
+
+    spec:
+      containers:
+      - image: foobar-bar:v1
+        name: foobar-bar
+        resources: {}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SERVER_PORT
+          value: "8080"
