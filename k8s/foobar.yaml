@@ -29,6 +29,6 @@ spec:
         - name: SERVER_PORT
           value: "8081"
         - name: FOO_SERVICE_URL
-          value: "http://foo-service:80"
+          value: "http://foo-ms"
         - name: BAR_SERVICE_URL
-          value: "http://bar-service:80"
+          value: "http://bar-ms"
