@@ -23,7 +23,13 @@ spec:
       containers:
       - image: foobar-bar:v1
         name: foobar-bar
-        resources: {}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 500m
+            memory: 500Mi
         ports:
         - containerPort: 8080
         env:
