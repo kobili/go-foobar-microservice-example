@@ -7,6 +7,8 @@ import (
 	"net/http"
 	"os"
 	"time"
+
+	"foobar/middleware"
 )
 
 type Message struct {
@@ -94,5 +96,5 @@ func main() {
 	}
 
 	fmt.Printf("listening on port %s\n", SERVER_PORT)
-	http.ListenAndServe(fmt.Sprintf(":%s", SERVER_PORT), mux)
+	http.ListenAndServe(fmt.Sprintf(":%s", SERVER_PORT), middleware.RequestLogger(mux))
 }

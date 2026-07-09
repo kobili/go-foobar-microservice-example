@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: foobar-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: foobar.com
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/api(/|$)(.*)"
+        backend:
+          service:
+            name: foobar-ms
+            port: 
+              number: 80
